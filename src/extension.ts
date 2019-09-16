@@ -2,6 +2,13 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from "vscode";
 
+const conf = vscode.workspace.getConfiguration("vuesplit");
+// console.log(conf);
+const toggleSideBar = conf.get("toggleSideBar");
+const repeatCommandToClose = conf.get("repeatCommandToClose");
+
+let exeCount = 0;
+
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
@@ -13,12 +20,28 @@ export function activate(context: vscode.ExtensionContext) {
   // Now provide the implementation of the command with registerCommand
   // The commandId parameter must match the command field in package.json
   let disposable = vscode.commands.registerCommand(
-    "extension.helloWorld",
+    "extension.vuesplit",
     async () => {
+      exeCount++;
+
+      if (repeatCommandToClose && exeCount % 2 === 0) {
+        await vscode.commands.executeCommand(
+          "workbench.action.focusFirstEditorGroup"
+        );
+        await vscode.commands.executeCommand(
+          "workbench.action.closeEditorsInOtherGroups"
+        );
+        if (toggleSideBar) {
+          await vscode.commands.executeCommand(
+            "workbench.action.toggleSidebarVisibility"
+          );
+        }
+        return;
+      }
       // The code you place here will be executed every time your command is executed
 
       // Display a message box to the user
-      vscode.window.showInformationMessage("Hello vscode!");
+      // vscode.window.showInformationMessage("Hello vscode!");
       // vscode.commands.executeCommand("editor.action.addCommentLine");
       // vscode.commands.executeCommand("editor.fold");
       // vscode.commands.executeCommand("revealLine", { lineNumber: 10 });
@@ -30,6 +53,12 @@ export function activate(context: vscode.ExtensionContext) {
       //     { groups: [{}, {}], size: 0.5 }
       //   ]
       // });
+
+      if (toggleSideBar) {
+        await vscode.commands.executeCommand(
+          "workbench.action.toggleSidebarVisibility"
+        );
+      }
       await vscode.commands.executeCommand(
         "workbench.action.focusFirstEditorGroup"
       );
