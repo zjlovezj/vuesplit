@@ -2,7 +2,7 @@
   "name": "vuesplit",
   "displayName": "VueSplit",
   "description": "split a vue file into 3 editor window",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.38.0"
   },
