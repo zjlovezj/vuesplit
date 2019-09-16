@@ -165,9 +165,11 @@ async function unfoldTag(tag: string) {
   //   by: "line",
   //   value: 0
   // });
-  const doc = vscode.window.activeTextEditor.document;
+  const doc =
+    vscode.window.activeTextEditor && vscode.window.activeTextEditor.document;
   if (!doc) {
     console.log("error: no doc", doc);
+    return;
   } else {
     console.log(doc);
   }

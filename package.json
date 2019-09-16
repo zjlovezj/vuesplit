@@ -1,10 +1,15 @@
 {
   "name": "vuesplit",
   "displayName": "VueSplit",
+  "publisher": "michaelwangzhangjun",
   "description": "split a vue file into 3 editor window",
-  "version": "1.0.1",
+  "repository": {
+    "url": "https://github.com/zjlovezj/vuesplit.git"
+  },
+  "version": "1.0.0",
   "engines": {
-    "vscode": "^1.38.0"
+    "vscode": "^1.38.0",
+    "node": ">=6.0.0"
   },
   "categories": [
     "Other"
@@ -44,10 +49,10 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "yarn run compile",
+    "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pretest": "yarn run compile",
+    "pretest": "npm run compile",
     "test": "node ./out/test/runTest.js"
   },
   "devDependencies": {
@@ -57,8 +62,9 @@
     "@types/vscode": "^1.38.0",
     "glob": "^7.1.4",
     "mocha": "^6.1.4",
-    "typescript": "^3.3.1",
     "tslint": "^5.12.1",
+    "typescript": "^3.3.1",
     "vscode-test": "^1.2.0"
-  }
+  },
+  "license": "BSD-2-Clause"
 }
