@@ -8,9 +8,9 @@ The purpose is to view 3 sections of vue files: template/script/style. Because w
 
 Press shift+ctrl+v (the default shortcut key) to split current vue files into three files.
 
-\!\(images/before.png\)
+![before](images/before.png)
 
-\!\(images/after.png\)
+![after](images/after.png)
 
 > Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
